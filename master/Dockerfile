@@ -1,4 +1,4 @@
-FROM php:cli-alpine
+FROM php:fpm-alpine
 
 MAINTAINER xinghen249@gmail.com
 
