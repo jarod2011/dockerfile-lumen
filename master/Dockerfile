@@ -25,8 +25,6 @@ RUN apk --no-cache add hiredis libmemcached zlib && \
     php -r "unlink('composer-setup.php');" && \
     mv composer.phar /usr/local/bin/composer && \
     composer self-update && \
-    composer global require "laravel/lumen-installer=~1.0" && \
-    cd /usr/local/bin && ln -s ~/.composer/vendor/bin/lumen && \
     apk del .build-deps .persistent-deps && \
     cd /usr && rm -rf src/ *tar*
     
