@@ -19,7 +19,7 @@ RUN apk --no-cache add hiredis libmemcached zlib && \
     tar zxvf /tmp/redis.tar.gz && cd *redis* && phpize && \
     ./configure && make && make install && \
     cd /root && rm -rf /tmp/redis* && rm -rf /root/*redis* && \
-    docker-php-ext-enable redis && docker-php-ext-install mysqli pdo_mysql zip && \
+    docker-php-ext-enable redis && docker-php-ext-install mysqli pdo_mysql zip bcmath && \
     php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
     php composer-setup.php && \
     php -r "unlink('composer-setup.php');" && \
