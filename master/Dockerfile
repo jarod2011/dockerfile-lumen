@@ -15,6 +15,11 @@ RUN apk --no-cache add hiredis libmemcached zlib libpng-dev && \
     ./configure && make && make install && \
     docker-php-ext-enable memcached && \
     cd /root && rm -rf /tmp/memcached* && rm -rf /root/*memcached* && \
+    cd /root && curl -o /tmp/xhprof.zip https://github.com/longxinH/xhprof/archive/master.zip -L 
+RUN cd /tmp/ && unzip /tmp/xhprof.zip && cd /tmp/*xhprof*/extension/ && \
+    phpize && ./configure && make && make install && \
+    docker-php-ext-enable xhprof && \
+    cd  /root && rm -rf /tmp/xhprof* && \
     cd /root && curl -o /tmp/redis.tar.gz https://github.com/phpredis/phpredis/archive/master.tar.gz -L && \
     tar zxvf /tmp/redis.tar.gz && cd *redis* && phpize && \
     ./configure && make && make install && \
