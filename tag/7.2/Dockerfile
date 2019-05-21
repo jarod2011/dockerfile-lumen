@@ -58,3 +58,5 @@ RUN apk --no-cache add hiredis libmemcached zlib libpng-dev curl libzip && \
     mv composer.phar /usr/local/bin/composer && \
     composer self-update  && \
     cd /usr && rm -rf src/ *tar* && rm -rf /tmp/
+
+RUN cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
