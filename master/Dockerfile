@@ -60,3 +60,4 @@ RUN apk --no-cache add hiredis libmemcached zlib libpng-dev curl libzip && \
     cd /usr && rm -rf src/ *tar* && rm -rf /tmp/
 
 RUN cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
+RUN mkdir /tmp && chmod 777 /tmp && echo "sys_temp_dir='/tmp'" > /usr/local/etc/php/conf.d/php-setting.ini

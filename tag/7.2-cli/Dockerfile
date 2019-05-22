@@ -1,4 +1,4 @@
-FROM php:7.2-fpm-alpine
+FROM php:7.2-cli-alpine
 
 LABEL maintainer="xinghen249@gmail.com"
 
@@ -40,6 +40,12 @@ RUN apk --no-cache add hiredis libmemcached zlib libpng-dev curl libzip && \
     phpize && ./configure && make && make install && \
     docker-php-ext-enable yac && \
     cd /root && rm -rf /tmp/yac* && \
+    cd /root && curl -o /tmp/swoole.tar.gz https://github.com/swoole/swoole-src/archive/master.tar.gz -L && \
+    tar zxvf /tmp/swoole.tar.gz && cd swoole* && phpize && \
+    ./configure --enable-coroutine --enable-async-redis --enable-mysqlnd && \
+    make && make install && \
+    docker-php-ext-enable swoole && \
+    cd /root && rm -rf /tmp/swoole* && rm -rf /root/swoole* && \
     cd /root && curl -o /tmp/redis.tar.gz https://github.com/phpredis/phpredis/archive/master.tar.gz -L && \
     tar zxvf /tmp/redis.tar.gz && cd *redis* && phpize && \
     ./configure && make && make install && \

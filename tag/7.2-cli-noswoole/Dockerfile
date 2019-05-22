@@ -1,4 +1,4 @@
-FROM php:7.2-fpm-alpine
+FROM php:7.2-cli-alpine
 
 LABEL maintainer="xinghen249@gmail.com"
 
